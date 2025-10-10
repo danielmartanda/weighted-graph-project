@@ -1,4 +1,4 @@
-﻿/* 
+/* 
 ================================================================
 Course: COIS 3020 - Data Structures and Algorithms II
 Assignment 1: Weighted Graph - Shortest Path
@@ -18,10 +18,11 @@ Authors:
 
 /* 
 -----------------------------------------
-Program/Driver Code (Main)
+JSON Parsing Method
 -----------------------------------------
-- Prompts user to input a source and target location
-- Calculates and prints the shortest path & total cost
-- Make sure you print out the location along the path to the destination (if any exist)  
-- Includes validation to ensure source and target nodes exist
+- Helper method to ingest the provided JSON file to populate the graph
+- Each node's adjacency list is constructed from the parsed data. 
+- (Optional) Data can be hardcoded if JSON parsing is hard. Resulting in 15% deduction.
+- Recommended: Include a print helper method to display all nodes for testing. 
 */
+

@@ -1,4 +1,4 @@
-﻿/* 
+/* 
 ================================================================
 Course: COIS 3020 - Data Structures and Algorithms II
 Assignment 1: Weighted Graph - Shortest Path
@@ -18,10 +18,8 @@ Authors:
 
 /* 
 -----------------------------------------
-Program/Driver Code (Main)
+Graph Data Structure
 -----------------------------------------
-- Prompts user to input a source and target location
-- Calculates and prints the shortest path & total cost
-- Make sure you print out the location along the path to the destination (if any exist)  
-- Includes validation to ensure source and target nodes exist
+- Implements a graph composed of nodes that store their edges in an adjacency list 
+- Provides methods for adding nodes and edges 
 */

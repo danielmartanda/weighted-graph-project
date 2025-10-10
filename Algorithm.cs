@@ -1,4 +1,4 @@
-﻿/* 
+/* 
 ================================================================
 Course: COIS 3020 - Data Structures and Algorithms II
 Assignment 1: Weighted Graph - Shortest Path
@@ -18,10 +18,10 @@ Authors:
 
 /* 
 -----------------------------------------
-Program/Driver Code (Main)
+Shortest Path Algorithm
 -----------------------------------------
-- Prompts user to input a source and target location
-- Calculates and prints the shortest path & total cost
-- Make sure you print out the location along the path to the destination (if any exist)  
-- Includes validation to ensure source and target nodes exist
+- Method to compute the shortest path between any two locations (nodes) on the map (graph)
+- We can use any algorithm that will find the shortest path between two nodes on a graph
+- Add nodes/edges as needed to test out edge cases
+- Justify our choice of algorithm in the testing document 
 */
