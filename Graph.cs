@@ -78,10 +78,15 @@ namespace WeightedGraph
             foreach (var node in adjacencyList)
             {
                 //This prints the starting node
-                Console.WriteLine($"{node.Key} -> ");
+                Console.Write($"{node.Key} -> ");
 
                 //This loops through each connected neighbour of the current node
-                
+                foreach (var (neighbour, weight) in node.Value)
+                {
+                    //This prints the connected node and its weight
+                    Console.Write($"{neighbour} ({weight}) ");
+                }
+                Console.WriteLine();
             }
         }
 

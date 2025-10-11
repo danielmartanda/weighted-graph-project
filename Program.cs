@@ -35,7 +35,19 @@ namespace WeightedGraph
     {
         static void Main()
         {
-            
+
+            //This clears the console
+            Console.Clear();
+
+            //Creating a new graph
+            Graph graph = new Graph();
+
+            //Manually testing (before parsing) to check PrintGraph()
+            graph.AddEdge("Location A", "Location B", 40);
+            graph.AddEdge("Location B", "Location C", 40);
+
+            //Displaying the graph data (populated from parsed JSON)
+            graph.PrintGraph();
         }
         
     }
