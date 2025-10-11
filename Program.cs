@@ -25,3 +25,18 @@ Program/Driver Code (Main)
 - Make sure you print out the location along the path to the destination (if any exist)  
 - Includes validation to ensure source and target nodes exist
 */
+
+using System;
+using System.Collections.Generic;
+
+namespace WeightedGraph
+{
+    class Program
+    {
+        static void Main()
+        {
+            
+        }
+        
+    }
+}
