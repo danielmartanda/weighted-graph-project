@@ -81,10 +81,20 @@ namespace WeightedGraph
                 Console.Write($"{node.Key} -> ");
 
                 //This loops through each connected neighbour of the current node
+                //  - Uses boolean to handle comma formatting between nodes (readability)
+                bool first = true;
                 foreach (var (neighbour, weight) in node.Value)
                 {
-                    //This prints the connected node and its weight
-                    Console.Write($"{neighbour} ({weight}) ");
+                    //This checks if its not the first neighbour
+                    if (!first)
+                    {
+                        Console.Write(", ");        //If not, adds a comma to separate
+                    }
+                    //This prints the connected node and its edge weight
+                    Console.Write($"{neighbour} ({weight} minutes)");
+                    
+                    //This marks that the first neighbour has been printed
+                    first = false;
                 }
                 Console.WriteLine();
             }

@@ -43,7 +43,8 @@ namespace WeightedGraph
             Graph graph = new Graph();
 
             //Loads graph data from the JSON file
-            Parse.LoadGraphDataFromJson(graph, "GraphData.json");
+            //  - Uses relative path and goes backwards three levels to get to root folder
+            Parse.LoadGraphDataFromJson(graph, @"../../../GraphData.json");
 
             //Displays the graph structure (populated from parsed JSON)
             graph.PrintGraph();
