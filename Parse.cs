@@ -26,3 +26,58 @@ JSON Parsing Method
 - Recommended: Include a print helper method to display all nodes for testing. 
 */
 
+using System;
+using System.Text.Json;
+
+namespace WeightedGraph
+{
+
+    //CLASSES
+    //  - These classes are used to deserialize the JSON file into C# objects
+
+    //This class represents the entirety of the JSON file
+    // - Contains all nodes and edges 
+    public class GraphData
+    {
+        //This list contains all nodes (location names)
+        public List<string> nodes { get; set; }
+
+        //This list contains all edges and weights
+        public List<EdgeData> edges { get; set; }
+    }
+
+    //This class represents an edge from the JSON file
+    // - Contains directed connections between nodes and their associated travel time
+    public class EdgeData
+    {
+        public string origin { get; set; }      //Origin node (starting location)
+        public string destination { get; set; } //Targeted node (destination location)
+        public int weight { get; set; }         //Edge weight (travel time between nodes)
+    }
+
+    static class Parse
+    {
+        //METHODS
+        //This method reads the provided JSON file and populates the graph with its data
+        public static void LoadGraphDataFromJson(Graph graph, string filePath)
+        {
+            //Reading JSON data
+            string jsonString = File.ReadAllText(filePath);
+            
+            //Deserialize into objects
+            GraphData data = JsonSerializer.Deserialize<GraphData>(jsonString);
+            
+            //Add nodes and edges to graph 
+            foreach (var node in data.nodes)
+            {
+                graph.AddNode(node);
+            }
+            
+            foreach (var edge in data.edges)
+            {
+                graph.AddEdge(edge.origin, edge.destination, edge.weight);
+            }
+        }
+
+    }
+}
