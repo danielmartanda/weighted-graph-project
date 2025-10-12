@@ -28,6 +28,8 @@ JSON Parsing Method
 
 using System;
 using System.Text.Json;
+using System.IO;
+using System.Text.Json.Serialization;
 
 namespace WeightedGraph
 {
@@ -50,9 +52,12 @@ namespace WeightedGraph
     // - Contains directed connections between nodes and their associated travel time
     public class EdgeData
     {
-        public string source { get; set; }      //Origin node (starting location)
-        public string target { get; set; } //Targeted node (destination location)
-        public int time_min { get; set; }         //Edge weight (travel time between nodes)
+        [JsonPropertyName("source")]
+        public string origin { get; set; }      //Origin node (starting location)
+        [JsonPropertyName("target")]
+        public string destination { get; set; } //Targeted node (destination location)
+        [JsonPropertyName("time_min")]
+        public int weight { get; set; }         //Edge weight (travel time between nodes)
     }
 
     static class Parse
@@ -75,7 +80,7 @@ namespace WeightedGraph
             
             foreach (var edge in data.edges)
             {
-                graph.AddEdge(edge.source, edge.target, edge.time_min);
+                graph.AddEdge(edge.origin, edge.destination, edge.weight);
             }
         }
 
