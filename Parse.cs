@@ -50,9 +50,9 @@ namespace WeightedGraph
     // - Contains directed connections between nodes and their associated travel time
     public class EdgeData
     {
-        public string origin { get; set; }      //Origin node (starting location)
-        public string destination { get; set; } //Targeted node (destination location)
-        public int weight { get; set; }         //Edge weight (travel time between nodes)
+        public string source { get; set; }      //Origin node (starting location)
+        public string target { get; set; } //Targeted node (destination location)
+        public int time_min { get; set; }         //Edge weight (travel time between nodes)
     }
 
     static class Parse
@@ -75,7 +75,7 @@ namespace WeightedGraph
             
             foreach (var edge in data.edges)
             {
-                graph.AddEdge(edge.origin, edge.destination, edge.weight);
+                graph.AddEdge(edge.source, edge.target, edge.time_min);
             }
         }
 
