@@ -42,6 +42,10 @@ namespace WeightedGraph
             //Creating a new graph
             Graph graph = new Graph();
 
+            Parse.LoadGraphDataFromJson(graph, "GraphData.json");
+            graph.PrintGraph();
+
+
             //Manually testing (before parsing) to check PrintGraph()
             graph.AddEdge("Location A", "Location B", 40);
             graph.AddEdge("Location B", "Location C", 40);
