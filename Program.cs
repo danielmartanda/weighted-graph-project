@@ -49,6 +49,9 @@ namespace WeightedGraph
             //Displays the graph structure (populated from parsed JSON)
             graph.PrintGraph();
 
+            //Hardcoded test for Algorithm.cs
+            Algorithm.DijkstraShortestPath(graph, "Location A", "Location D");
+
         }
         
     }

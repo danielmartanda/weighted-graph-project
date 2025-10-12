@@ -92,12 +92,31 @@ namespace WeightedGraph
                     }
                     //This prints the connected node and its edge weight
                     Console.Write($"{neighbour} ({weight} minutes)");
-                    
+
                     //This marks that the first neighbour has been printed
                     first = false;
                 }
                 Console.WriteLine();
             }
+        }
+
+        //This method checks if a specific node exists in the graph, returning a boolean value
+        public bool ContainsNode(string node)
+        {
+            return adjacencyList.ContainsKey(node);
+        }
+
+        //This method returns all nodes names stored in the graph
+        //  - Used by our Dijkstra's algorithm to iterate through all nodes
+        public IEnumerable<string> GetAllNodes()
+        {
+            return adjacencyList.Keys;
+        }
+        
+        //This method returns all the neighbouring nodes and their weights for the specified node
+        public List<(string neighbour, int weight)> GetNeighbours(string node)
+        {
+            return adjacencyList[node];
         }
 
     }
