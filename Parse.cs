@@ -18,12 +18,12 @@ Authors:
 
 /* 
 -----------------------------------------
-JSON Parsing Method
+JSON Parsing Component
 -----------------------------------------
-- Helper method to ingest the provided JSON file to populate the graph
-- Each node's adjacency list is constructed from the parsed data. 
-- (Optional) Data can be hardcoded if JSON parsing is hard. Resulting in 15% deduction.
-- Recommended: Include a print helper method to display all nodes for testing. 
+- Responsible for loading and converting JSON graph data into the Graph data structure
+- Reads nodes and edges, then uses Graph.cs methods (AddNode and AddEdge) to build the adjacency list 
+- (Recommendation) Include a print helper method to display all nodes for testing
+- (Optional) Data can be hardcoded but results in 15% deduction 
 */
 
 using System;
@@ -34,53 +34,50 @@ using System.Text.Json.Serialization;
 namespace WeightedGraph
 {
 
-    //CLASSES
-    //  - These classes are used to deserialize the JSON file into C# objects
+    //JSON DATA CLASSES
+    //  - These classes represent the structure of the JSON file
+    //  - They are used to deserialize JSON into C# objects
 
-    //This class represents the entirety of the JSON file
-    // - Contains all nodes and edges 
-    public class GraphData
-    {
-        //This list contains all nodes (location names)
-        public List<string> nodes { get; set; }
-
-        //This list contains all edges and weights
-        public List<EdgeData> edges { get; set; }
-    }
-
-    //This class represents an edge from the JSON file
-    // - Contains directed connections between nodes and their associated travel time
+    //This class represents a directed edge in the JSON file
+    // - Includes the source, target and weighted travel time (time_min)
     public class EdgeData
     {
-        [JsonPropertyName("source")]
-        public string origin { get; set; }      //Origin node (starting location)
-        [JsonPropertyName("target")]
-        public string destination { get; set; } //Targeted node (destination location)
-        [JsonPropertyName("time_min")]
-        public int weight { get; set; }         //Edge weight (travel time between nodes)
+        public string source { get; set; }      //Source node (starting location)
+        public string target { get; set; }      //Targeted node (destination location)
+        public int time_min { get; set; }       //Edge weight (travel time between nodes)
     }
 
+    //This class represents the entire JSON file
+    // - Contains separate lists of nodes and edges 
+    public class GraphData
+    {
+        public List<string> nodes { get; set; }     //List of all nodes (location names)
+        public List<EdgeData> edges { get; set; }   //List of all directed edges and weights
+    }
+
+    //PARSING CLASS
+    //  - Contains method to convert JSON data into the Graph
     static class Parse
     {
-        //METHODS
-        //This method reads the provided JSON file and populates the graph with its data
+        //This method reads a JSON file and populates data into the Graph object
         public static void LoadGraphDataFromJson(Graph graph, string filePath)
         {
-            //Reading JSON data
+            //This reads the entire JSON file
             string jsonString = File.ReadAllText(filePath);
-            
-            //Deserialize into objects
+
+            //This converts the JSON string into GraphData object (deserializing)
             GraphData data = JsonSerializer.Deserialize<GraphData>(jsonString);
-            
-            //Add nodes and edges to graph 
+
+            //This adds all nodes to the graph 
             foreach (var node in data.nodes)
             {
                 graph.AddNode(node);
             }
-            
+
+            //This adds all edges to the graph 
             foreach (var edge in data.edges)
             {
-                graph.AddEdge(edge.origin, edge.destination, edge.weight);
+                graph.AddEdge(edge.source, edge.target, edge.time_min);
             }
         }
 
