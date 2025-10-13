@@ -47,10 +47,30 @@ namespace WeightedGraph
             Parse.LoadGraphDataFromJson(graph, @"../../../GraphData.json");
 
             //Displays the graph structure (populated from parsed JSON)
+            Console.WriteLine("Directed & Weighted Graph");
+            Console.WriteLine("-------------------------");
             graph.PrintGraph();
 
-            //Hardcoded test for Algorithm.cs
-            Algorithm.DijkstraShortestPath(graph, "Location A", "Location D");
+            //User prompt
+            Console.WriteLine();
+            Console.Write("Please enter a starting location (Ex. Location B) -> ");
+            string origin = Console.ReadLine();
+
+            Console.Write("Please enter a destination location (Ex. Location G) -> ");
+            string destination = Console.ReadLine();
+
+            //Normalizes input to allow user to also enter just a letter instead of location
+            if (!origin.StartsWith("Location "))
+            {
+                origin = "Location " + origin.Trim();
+            }
+            if (!destination.StartsWith("Location "))
+            {
+                destination = "Location " + destination.Trim();
+            }
+
+            //Calculates shortest path
+            Algorithm.DijkstraShortestPath(graph, origin, destination);
 
         }
         
